@@ -1,5 +1,5 @@
-const express = require('express')
-const connectDB = require('./config/db')
+import express from 'express'
+import connectDB from './config/db'
 
 const app = express()
 
@@ -12,10 +12,16 @@ app.use(express.json({ extended: false }))
 app.get('/', (req, res) => res.send('API running'))
 
 // Define Routes
-app.use('/api/users', require('./routes/api/users'))
-app.use('/api/auth', require('./routes/api/auth'))
-app.use('/api/posts', require('./routes/api/posts'))
-app.use('/api/profile', require('./routes/api/profile'))
+
+import users from './routes/api/users'
+import auth from './routes/api/auth'
+import posts from './routes/api/posts'
+import profile from './routes/api/profile'
+
+app.use('/api/users', users)
+app.use('/api/auth', auth)
+app.use('/api/posts', posts)
+app.use('/api/profile', profile)
 
 const PORT = process.env.PORT || 5000
 

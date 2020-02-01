@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
-const config = require('config')
+import mongoose from 'mongoose'
+import config from 'config'
 
 const db = config.get('mongoURI')
 
-async function connectDB() {
+export default async function connectDB() {
 	try {
 		await mongoose.connect(db, {
 			useNewUrlParser: true,
@@ -17,5 +17,3 @@ async function connectDB() {
 		process.exit(1)
 	}
 }
-
-module.exports = connectDB
