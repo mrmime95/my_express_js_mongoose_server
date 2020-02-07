@@ -9,6 +9,7 @@ export default async function connectDB() {
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			useCreateIndex: true,
+			useFindAndModify: false,
 		})
 		console.log('MongoDB connected...')
 	} catch (error) {

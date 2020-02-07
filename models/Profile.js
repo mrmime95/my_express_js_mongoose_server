@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 export default mongoose.model(
 	'profile',
 	new mongoose.Schema({
-		user: { type: mongoose.Schema.types.objectId, ref: 'user' },
+		user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
 		company: {
 			type: String,
 		},
@@ -26,7 +26,6 @@ export default mongoose.model(
 		},
 		githubUserName: {
 			type: String,
-			required: true,
 		},
 		experiences: [
 			{ title: { type: String, required: true } },
@@ -37,7 +36,7 @@ export default mongoose.model(
 			{ current: { type: String, default: false } },
 			{ description: { type: String } },
 		],
-		edication: [
+		education: [
 			{ school: { type: String, required: true } },
 			{ degree: { type: String, required: true } },
 			{ fieldOfStudy: { type: String, required: true } },
