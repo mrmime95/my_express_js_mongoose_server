@@ -1,6 +1,7 @@
 import express from 'express'
 import auth from '../../middleware/auth'
 import Profile from '../../models/Profile'
+import User from '../../models/User'
 import { check, validationResult } from 'express-validator'
 
 const router = express.Router()
@@ -99,4 +100,19 @@ router.get('/user/:user_id', async (req, res) => {
 	}
 })
 
+// @route     DELETE api/profile/
+// @desc      Deletes user-profile-posts
+// @access    Private
+router.delete('/', auth, async (req, res) => {
+	try {
+		await Profile.findOneAndRemove({ user: req.user.id })
+		await User.findOneAndRemove({ _id: req.user.id })
+		res.json({ msg: 'User deleted' })
+	} catch (error) {
+		console.error(error.message)
+		return res.status(500).send('Server error')
+	}
+})
+
+/* xkeycaps */
 export default router
