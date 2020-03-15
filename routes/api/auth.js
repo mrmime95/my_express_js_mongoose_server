@@ -8,6 +8,7 @@ import { check, validationResult } from 'express-validator'
 import User from '../../models/User'
 
 const router = express.Router()
+
 // @route     GET api/auth
 // @desc      Get Authenticated user
 // @access    Protected
