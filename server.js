@@ -2,9 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import connectDB from './config/db'
 
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', undefined]
 const corsOptions = {
-	origin: function(origin, callback) {
+	origin: function (origin, callback) {
 		if (whitelist.indexOf(origin) !== -1) {
 			callback(null, true)
 		} else {
